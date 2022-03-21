@@ -1,4 +1,6 @@
-# Gazebo for MAVLink SITL and HITL
+# Gazebo for MAVLink SITL and HITL for Fully Actuated Hexarotor with Tilted Rotor Arms
+
+This is a companion to the Fylly Actuated PX4 autopilot. Please refer to [https://github.com/castacks/PX4-fully-actuated](https://github.com/castacks/PX4-fully-actuated) for more information about the project and how to use it.
 
 [![Build Status](https://travis-ci.org/PX4/sitl_gazebo.svg?branch=master)](https://travis-ci.org/PX4/sitl_gazebo)
 
