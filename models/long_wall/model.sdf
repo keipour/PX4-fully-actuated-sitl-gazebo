@@ -3,7 +3,7 @@
   <model name='long_wall'>
     <link name='link'>
       <inertial>
-        <mass>1</mass>
+        <mass>1000</mass>
         <inertia>
           <ixx>0.166667</ixx>
           <ixy>0</ixy>
@@ -12,7 +12,7 @@
           <iyz>0</iyz>
           <izz>0.166667</izz>
         </inertia>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
       </inertial>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>
@@ -22,12 +22,12 @@
       <visual name='visual'>
         <geometry>
           <box>
-            <size>10 30 10</size>
+            <size>1 10 4</size>
           </box>
         </geometry>
         <material>
           <script>
-            <name>Gazebo/Grey</name>
+            <name>Gazebo/Bricks</name>
             <uri>file://media/materials/scripts/gazebo.material</uri>
           </script>
           <shader type='vertex'>
@@ -48,7 +48,7 @@
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
-            <size>10 30 10</size>
+            <size>1 10 4</size>
           </box>
         </geometry>
         <surface>
