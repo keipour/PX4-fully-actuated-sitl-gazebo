@@ -545,6 +545,7 @@
         <ode>
           <implicit_spring_damper>1</implicit_spring_damper>
         </ode>
+        <provide_feedback>true</provide_feedback>
       </physics>
     </joint>
 
@@ -1617,6 +1618,17 @@
       <xyzOffsets>0 0 0</xyzOffsets>
       <rpyOffsets>0 0 0</rpyOffsets>
     </plugin>
+    <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+        <updateRate>100.0</updateRate>
+        <topicName>ft_sensor_topic</topicName>
+        <jointName>left_leg_joint</jointName>
+    </plugin>
+    <!-- <plugin name="f3d_l_finger_controller" filename="libgazebo_ros_f3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100.0</updateRate>
+      <bodyName>base_link</bodyName>
+      <topicName>base_force_ground_truth</topicName>
+    </plugin> -->
   </model>
 </sdf>
 
