@@ -442,6 +442,83 @@
       </physics>
     </joint-->
 
+    <link name="sim_ft_sensor">
+      <inertial>
+        <!-- place holder -->
+        <pose>-0.23 0 0 0 1.57 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='collision'>
+        <pose>-0.23 0 0 0 1.57 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>0.33</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='manipulator_arm_cylinder'>
+        <pose>-0.23 0 0 0 1.57 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>0.32</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='manipulator_arm_sensor'>
+        <pose>-0.13 0 0 0 1.57 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.032</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='manipulator_arm_tip'>
+        <pose>-0.39 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.01</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name='manipulator_arm_joint' type='fixed'>
+      <child>sim_ft_sensor</child>
+      <parent>base_link</parent>
+      <pose relative_to="sim_ft_sensor">-0.13 0 0 0 0 0</pose>
+      <physics>
+        <provide_feedback>true</provide_feedback>
+      </physics>
+    </joint>
+
     <link name="left_leg">
       <inertial>
         <!-- place holder -->
@@ -1595,6 +1672,12 @@
       </control_gimbal_channels>
       <gimbal_imu>camera_imu</gimbal_imu>
     </plugin-->
+    <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+        <updateRate>100.0</updateRate>
+        <topicName>ft_data</topicName>
+        <!-- <gaussianNoise>0.0</gaussianNoise> -->
+        <jointName>manipulator_arm_joint</jointName>
+    </plugin>
     <plugin name='wind_plugin' filename='libgazebo_wind_plugin.so'>
       <frameId>base_link</frameId>
       <linkName>base_link</linkName>
